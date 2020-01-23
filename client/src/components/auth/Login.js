@@ -3,7 +3,13 @@ import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { loginUser } from "../../actions/authActions";
-import classnames from "classnames";class Login extends Component {
+import classnames from "classnames";
+import Card from '@material-ui/core/Card';
+import bg from '../images/bg.jpg';
+import Button from '@material-ui/core/Button';
+
+
+class Login extends Component {
   constructor() {
     super();
     this.state = {
@@ -33,16 +39,15 @@ import classnames from "classnames";class Login extends Component {
     };this.props.loginUser(userData); // since we handle the redirect within our component, we don't need to pass in this.props.history as a parameter
   };render() {
     const { errors } = this.state;return (
-      <div className="container">
-        <div style={{ marginTop: "2rem" }} className="row">
-          <div className="col s6 offset-s2" style={{background: "antiquewhite"}}>
-            <Link to="/" className="btn-flat waves-effect">
-              <i className="material-icons left">keyboard_backspace</i> Back to
-              home
-            </Link>
+      <div className="container" style={{ height: "90vh",width:"100%",maxWidth: "100%",backgroundImage:`url(${bg})`,backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
+      backgroundSize: "cover" }} >
+        <div className="row">
+          <Card className="col s8 offset-s2" style={{background: "#3f51b517", marginTop: "15px"}}>
             <div className="col s12" style={{ paddingLeft: "11.250px" , marginBottom: "9px" }}>
               <h5>
-                Login
+              <span><small> Welcome to Cyber World! </small>
+               <small style={{float:  "right"}}>Good to see you again. <span role="img" aria-label="clap">👏</span> </small></span>
               </h5>
               <p className="grey-text text-darken-1">
                 Don't have an account? <Link to="/register">Register</Link>
@@ -86,20 +91,34 @@ import classnames from "classnames";class Login extends Component {
               <div className="col s12" style={{ paddingLeft: "11.250px" }}>
                 <button
                   style={{
-                    width: "100px",
                     borderRadius: "3px",
                     letterSpacing: "1.5px",
                     marginBottom: "20px",
                     lineHeight: "0px",
-                    height: "30px"
+                    background: "green"
                   }}
                   type="submit"
-                  className="btn btn-large waves-effect waves-light hoverable lightblue accent-3">
+                  className="btn btn-medium waves-effect waves-light hoverable accent-3">
                   Login
                 </button>
+
+                <Link
+                to="/"
+                style={{
+                  borderRadius: "3px",
+                  marginLeft: "10px",
+                  letterSpacing: "1.5px",
+                  float: "right",
+                  background:"red",
+                }}
+              >
+                <Button style={{color: "white", fontWeight: "600"}}>Cancel</Button>
+              </Link>
               </div>
+
+              
             </form>
-          </div>
+          </Card>
         </div>
       </div>
     );

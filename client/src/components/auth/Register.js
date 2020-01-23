@@ -3,7 +3,12 @@ import { Link, withRouter } from "react-router-dom";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { registerUser } from "../../actions/authActions";
-import classnames from "classnames";class Register extends Component {
+import classnames from "classnames";
+import Card from '@material-ui/core/Card';
+import bg from '../images/bg.jpg';
+import Button from '@material-ui/core/Button';
+
+class Register extends Component {
   constructor() {
     super();
     this.state = {
@@ -35,16 +40,14 @@ import classnames from "classnames";class Register extends Component {
     };this.props.registerUser(newUser, this.props.history); 
   };render() {
     const { errors } = this.state;return (
-      <div className="container">
-        <div  style={{ marginTop: "2rem" }} className="row">
-          <div className="col s6 offset-s2"  style={{background: "antiquewhite"}}>
-            <Link to="/" className="btn-flat waves-effect">
-              <i className="material-icons left">keyboard_backspace</i> Back to
-              home
-            </Link>
+      <div className="container" style={{ height: "90vh",width:"100%",maxWidth: "100%",backgroundImage:`url(${bg})`,backgroundPosition: "center",
+      backgroundRepeat: "no-repeat",
+      backgroundSize: "cover" }}>
+        <div className="row">
+          <Card className="col s8 offset-s2"  style={{background: "#3f51b517"}}>
             <div className="col s12" style={{ paddingLeft: "11.250px" }}>
               <h5>
-                Register
+              <span><small> Welcome to Cyber World! </small><span role="img" aria-label="clap">👏</span></span>
               </h5>
               <p className="grey-text text-darken-1">
                 Already have an account? <Link to="/login">Log in</Link>
@@ -110,20 +113,31 @@ import classnames from "classnames";class Register extends Component {
               <div className="col s12" style={{ paddingLeft: "11.250px" }}>
                 <button
                   style={{
-                    width: "150px",
                     borderRadius: "3px",
                     letterSpacing: "1.5px",
                     marginBottom: "20px",
                     lineHeight: "0px",
-                    height: "30px"
+                    background: "green"
                   }}
                   type="submit"
-                  className="btn btn-large waves-effect waves-light hoverable lightblue accent-3">
+                  className="btn btn-medium waves-effect waves-light hoverable blue accent-3">
                   Sign up
                 </button>
+                <Link
+                to="/"
+                style={{
+                  borderRadius: "3px",
+                  marginLeft: "10px",
+                  letterSpacing: "1.5px",
+                  float: "right",
+                  background:"red",
+                }}
+              >
+                <Button style={{color: "white", fontWeight: "600"}}>Cancel</Button>
+              </Link>
               </div>
             </form>
-          </div>
+          </Card>
         </div>
       </div>
     );
